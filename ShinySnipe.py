@@ -10,9 +10,9 @@ price = input("Enter search price for shiny: ")
 time.sleep(2)
 
 while True:
+    # shake off afk timer
+    move.one_block()
     # 10 minutes
     end_time = 600 + time.time()
     filter.run(price)
     refresh_buy.run(end_time)
-    # shake off afk timer
-    move.one_block()
