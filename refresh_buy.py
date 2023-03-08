@@ -68,8 +68,10 @@ def run(end_time):
     # while there are no entries, and we have not exceeded 10 minutes
     if not check_entries():
         go_to_refresh()
+        time.sleep(0.5)
     while not check_entries() and end_time > time.time():
         refresh()
+        time.sleep(0.5)
     if check_entries():
         buy()
     pydirectinput.press("p")
