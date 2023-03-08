@@ -26,6 +26,7 @@ def load_terminal():
 
             pydirectinput.click()
             time.sleep(random_breaks.input_break())
+            print("Entered gtl")
             break
     while True:
         if pyautogui.locateOnScreen(lowest_price, confidence=0.8) is not None:
@@ -35,6 +36,7 @@ def load_terminal():
 
             pydirectinput.click()
             time.sleep(random_breaks.input_break())
+            print("Filter Lowest Price")
             break
     while True:
         if pyautogui.locateOnScreen(advanced_search, confidence=0.8) is not None:
@@ -44,5 +46,6 @@ def load_terminal():
 
             pydirectinput.click()
             time.sleep(random_breaks.input_break())
+            print("Advanced Search")
             break
 
