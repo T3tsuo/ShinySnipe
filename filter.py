@@ -14,13 +14,19 @@ lowest_price = Image.open(requests.get("https://raw.githubusercontent.com/"
 advanced_search = Image.open(requests.get("https://raw.githubusercontent.com/"
                                     "T3tsuo/ShinySnipe/main/location/advanced_search.png", stream=True).raw)
 
+gtl_icon = Image.open(requests.get("https://raw.githubusercontent.com/"
+                                    "T3tsuo/ShinySnipe/main/location/gtl_icon.png", stream=True).raw)
+
 def load_terminal():
-    pydirectinput.press("z")
-    time.sleep(random_breaks.dialogue_break())
-    pydirectinput.press("down")
-    time.sleep(random_breaks.input_break())
-    pydirectinput.press("z")
-    time.sleep(random_breaks.input_break())
+    while True:
+        if pyautogui.locateOnScreen(gtl_icon) is not None:
+            location = pyautogui.locateOnScreen(gtl_icon)
+            pyautogui.moveTo(location.left + random() * location.width,
+                             location.top + random() * location.height)
+
+            pydirectinput.click()
+            time.sleep(random_breaks.input_break())
+            break
     while True:
         if pyautogui.locateOnScreen(lowest_price, confidence=0.8) is not None:
             location = pyautogui.locateOnScreen(lowest_price, confidence=0.8)
