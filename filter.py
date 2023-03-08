@@ -26,7 +26,7 @@ def load_terminal():
 
             pydirectinput.click()
             time.sleep(random_breaks.input_break())
-            print("Entered gtl")
+            print("Entered GTL")
             break
     while True:
         if pyautogui.locateOnScreen(lowest_price, confidence=0.8) is not None:
