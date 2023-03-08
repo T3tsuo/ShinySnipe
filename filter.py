@@ -14,6 +14,9 @@ lowest_price = Image.open(requests.get("https://raw.githubusercontent.com/"
 advanced_search = Image.open(requests.get("https://raw.githubusercontent.com/"
                                     "T3tsuo/ShinySnipe/main/location/advanced_search.png", stream=True).raw)
 
+search = Image.open(requests.get("https://raw.githubusercontent.com/"
+                                    "T3tsuo/ShinySnipe/main/location/search.png", stream=True).raw)
+
 
 def load_terminal():
     pydirectinput.press("p")
@@ -49,6 +52,7 @@ def price_filter(price):
     for i in range(len(price)):
         pydirectinput.press(price[i])
         time.sleep(random_breaks.input_break())
+    print("Price Entered: " + price)
 
 def shiny_filter():
     for i in range(2):
@@ -56,3 +60,24 @@ def shiny_filter():
         time.sleep(random_breaks.input_break())
     pydirectinput.press("down")
     time.sleep(random_breaks.input_break())
+    print("All Shiny")
+
+
+def search_filter():
+    while True:
+        if pyautogui.locateOnScreen(search, confidence=0.8) is not None:
+            location = pyautogui.locateOnScreen(search, confidence=0.8)
+            pyautogui.moveTo(location.left + random() * location.width,
+                             location.top + random() * location.height)
+
+            pydirectinput.click()
+            time.sleep(random_breaks.input_break())
+            print("Search")
+            break
+
+
+def run(price):
+    load_terminal()
+    price_filter(price)
+    shiny_filter()
+    search_filter()

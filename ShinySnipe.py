@@ -6,7 +6,6 @@ import filter
 os.environ['REQUESTS_CA_BUNDLE'] = "certifi/cacert.pem"
 
 time.sleep(2)
-filter.load_terminal()
+filter.run("1200000")
 
-filter.price_filter("1000000")
-filter.shiny_filter()
+
